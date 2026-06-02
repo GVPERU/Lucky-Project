@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucky | Veta Estratégica</title>
+  <style>
+    :root{
+      --bg:#F7F1E8;
+      --ink:#3B2416;
+      --brown:#8A4F16;
+      --brown2:#B97828;
+      --cream:#FFF9EF;
+      --muted:#7A6A5D;
+      --line:#D8C7B4;
+      --green:#697A4F;
+      --red:#8D3F2F;
+      --blue:#4B6475;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
+    }
+
+    .page{
+      width:1080px;
+      min-height:1350px;
+      margin:0 auto;
+      padding:64px;
+      background:
+        radial-gradient(circle at top right, rgba(138,79,22,.10), transparent 34%),
+        linear-gradient(180deg,#FFF8ED 0%,#F5EBDD 100%);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .brand{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      margin-bottom:54px;
+    }
+
+    .logo{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .diamond{
+      width:18px;
+      height:18px;
+      background:var(--brown);
+      transform:rotate(45deg);
+    }
+
+    .tag{
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    h1{
+      font-size:72px;
+      line-height:.96;
+      margin:0;
+      letter-spacing:-.055em;
+      max-width:850px;
+    }
+
+    .subtitle{
+      margin-top:24px;
+      font-size:27px;
+      line-height:1.28;
+      color:var(--muted);
+      max-width:850px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+      margin-top:54px;
+    }
+
+    .card{
+      background:rgba(255,249,239,.82);
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:30px;
+      box-shadow:0 18px 50px rgba(59,36,22,.08);
+    }
+
+    .card h2{
+      margin:0 0 18px 0;
+      font-size:28px;
+      letter-spacing:-.02em;
+    }
+
+    .big{
+      font-size:58px;
+      font-weight:800;
+      letter-spacing:-.05em;
+      margin:12px 0;
+    }
+
+    .small{
+      font-size:18px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    .equation{
+      margin:42px 0;
+      background:var(--ink);
+      color:#FFF8ED;
+      border-radius:32px;
+      padding:38px;
+    }
+
+    .equation h2{
+      margin:0 0 30px 0;
+      font-size:34px;
+    }
+
+    .formula{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:14px;
+      align-items:stretch;
+    }
+
+    .factor{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:22px;
+      padding:22px 16px;
+      text-align:center;
+      min-height:150px;
+    }
+
+    .factor .icon{
+      font-size:34px;
+      margin-bottom:14px;
+    }
+
+    .factor strong{
+      display:block;
+      font-size:20px;
+      line-height:1.05;
+    }
+
+    .factor span{
+      display:block;
+      margin-top:8px;
+      font-size:14px;
+      color:#E6D8C6;
+      line-height:1.3;
+    }
+
+    .plus{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:32px;
+      font-weight:700;
+      color:#D7A05F;
+    }
+
+    .portfolio{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:28px;
+      margin-top:34px;
+    }
+
+    .hub{
+      height:390px;
+      position:relative;
+      border-radius:32px;
+      border:1px solid var(--line);
+      background:rgba(255,249,239,.72);
+      overflow:hidden;
+    }
+
+    .center{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:210px;
+      height:210px;
+      border-radius:50%;
+      background:var(--brown);
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      font-size:24px;
+      font-weight:800;
+      letter-spacing:.03em;
+      box-shadow:0 20px 45px rgba(138,79,22,.22);
+    }
+
+    .node{
+      position:absolute;
+      width:145px;
+      min-height:72px;
+      padding:14px;
+      border-radius:18px;
+      background:var(--cream);
+      border:1px solid var(--line);
+      font-weight:700;
+      text-align:center;
+      font-size:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .n1{top:34px;left:52px}
+    .n2{top:40px;right:52px}
+    .n3{bottom:42px;left:54px}
+    .n4{bottom:42px;right:54px}
+    .n5{top:160px;left:22px}
+    .n6{top:160px;right:22px}
+
+    .thesis{
+      display:grid;
+      gap:16px;
+    }
+
+    .pill{
+      padding:20px 22px;
+      border-radius:22px;
+      background:rgba(255,249,239,.84);
+      border:1px solid var(--line);
+    }
+
+    .pill strong{
+      display:block;
+      font-size:20px;
+      margin-bottom:6px;
+    }
+
+    .pill span{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.4;
+    }
+
+    .roadmap{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:10px;
+    }
+
+    .step{
+      background:rgba(255,249,239,.88);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px 14px;
+      min-height:142px;
+    }
+
+    .step .num{
+      color:var(--brown);
+      font-weight:800;
+      font-size:18px;
+      margin-bottom:12px;
+    }
+
+    .step strong{
+      display:block;
+      font-size:17px;
+      line-height:1.1;
+    }
+
+    .step span{
+      display:block;
+      margin-top:8px;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.3;
+    }
+
+    .footer{
+      margin-top:34px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    @media(max-width:1100px){
+      .page{width:100%;padding:34px}
+      h1{font-size:48px}
+      .hero,.portfolio{grid-template-columns:1fr}
+      .formula{grid-template-columns:1fr}
+      .plus{display:none}
+      .roadmap{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="brand">
+      <div class="logo">
+        <div class="diamond"></div><div class="diamond"></div><div class="diamond"></div>
+        <div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div>
+      </div>
+      <div class="tag">Siete Hermanos Co. · Working Brief</div>
+    </section>
+
+    <h1>La veta estratégica no es vender más alcohol.</h1>
+    <p class="subtitle">
+      Es construir una plataforma de bebidas para nuevas ocasiones de consumo:
+      moderadas, premium, flexibles y con identidad.
+    </p>
+
+    <section class="hero">
+      <div class="card">
+        <h2>La pregunta incómoda</h2>
+        <div class="big">¿Por qué entrar?</div>
+        <p class="small">
+          El consumo global se está moderando. La oportunidad no está en perseguir volumen,
+          sino en diseñar productos para momentos específicos y consumidores más selectivos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>La respuesta estratégica</h2>
+        <div class="big">Ocasión &gt; categoría</div>
+        <p class="small">
+          Lucky funciona como primer producto de aprendizaje: aperitivo, spritz,
+          baja intensidad, historia propia y potencial de expansión hacia RTDs,
+          hard seltzers, granada y low/no alcohol.
+        </p>
+      </div>
+    </section>
+
+    <section class="equation">
+      <h2>La oportunidad aparece en la intersección correcta</h2>
+      <div class="formula">
+        <div class="factor">
+          <div class="icon">↓</div>
+          <strong>Moderación</strong>
+          <span>Menos consumo automático; más elección consciente.</span>
+        </div>
+        <div class="plus">+</div>
+        <div class="factor">
+          <div class="icon">◈</div>
+          <strong>Premium selectivo</strong>
+          <span>Calidad, historia y formatos más cuidados.</span>
+        </div>
+        <div class="plus">+</div>
+        <div class="factor">
+          <div class="icon">○</div>
+          <strong>Ocasiones claras</strong>
+          <span>Aperitivo, spritz, reunión, pre-dinner, regalo.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio">
+      <div class="hub">
+        <div class="center">SIETE<br>HERMANOS<br>CO.</div>
+        <div class="node n1">Lucky<br>Aperitivo</div>
+        <div class="node n2">Hard<br>Seltzers</div>
+        <div class="node n3">Granada /<br>Pomegranate</div>
+        <div class="node n4">RTDs</div>
+        <div class="node n5">Low<br>Alcohol</div>
+        <div class="node n6">No Alcohol<br>Futuro</div>
+      </div>
+
+      <div class="thesis">
+        <div class="pill">
+          <strong>No es una apuesta pura al alcohol</strong>
+          <span>El portafolio puede combinar productos con alcohol, baja graduación y eventualmente opciones sin alcohol.</span>
+        </div>
+        <div class="pill">
+          <strong>No es solo vermut</strong>
+          <span>Lucky es el primer MVP de una plataforma de desarrollo de bebidas.</span>
+        </div>
+        <div class="pill">
+          <strong>No se compite por volumen masivo</strong>
+          <span>Se compite por identidad, ocasión, experiencia y capacidad de adaptación.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="roadmap">
+      <div class="step">
+        <div class="num">01</div>
+        <strong>Producto final</strong>
+        <span>Perfil sensorial, estabilidad, repetibilidad.</span>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <strong>Marca & propuesta</strong>
+        <span>Branding, storytelling, packaging, ritual de consumo.</span>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <strong>Registros</strong>
+        <span>Legal, sanitario, marca, fórmula, contratos.</span>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <strong>Lanzamiento Perú</strong>
+        <span>Canales selectivos, bares, eventos, aprendizaje.</span>
+      </div>
+      <div class="step">
+        <div class="num">05</div>
+        <strong>Portafolio</strong>
+        <span>Hard seltzer, granada, RTDs, variantes.</span>
+      </div>
+      <div class="step">
+        <div class="num">06</div>
+        <strong>Argentina</strong>
+        <span>Subsidiaria separada si promotor/enólogo lideran mercado.</span>
+      </div>
+    </section>
+
+    <section class="footer">
+      <strong>Fuentes de contexto:</strong>
+      IWSR describe el mercado 2025 como “subdued but opportunity-rich” y resalta nuevas estrategias de moderación.
+      Euromonitor reporta estancamiento del crecimiento y auge de hábitos como “zebra striping”.
+      NielsenIQ resume que el crecimiento vendrá de calidad, flexibilidad y ocasiones claras, no de subir precios o perseguir tendencias generales.
+      <br><br>
+      Referencias:
+      IWSR, “Five Key Trends Shifting the Beverage Alcohol Market in 2025”.
+      Euromonitor, “Zebra striping trend reshapes drinking habits as alcohol market flatlines”.
+      NielsenIQ, “2025 Beverage Alcohol Year in Review”.
+    </section>
+  </main>
+</body>
+</html>
